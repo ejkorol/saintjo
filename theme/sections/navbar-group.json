@@ -1,0 +1,12 @@
+{
+    "type": "custom.navbar",
+    "name": "Navbar",
+    "sections": {
+        "navbar": {
+            "type": "navbar"
+        }
+    },
+    "order": [
+        "navbar"
+    ]
+}
