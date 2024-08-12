@@ -1,5 +1,11 @@
 {
   "name": "Index",
-  "sections": {},
-  "order": []
+  "sections": {
+    "hero": {
+      "type": "hero"
+    }
+  },
+  "order": [
+    "hero"
+  ]
 }
