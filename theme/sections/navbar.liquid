@@ -1,3 +1,27 @@
-<nav class="navbar">
-    <h3 class="navbar__header">Saint Jo</h3>
+<nav class="flex absolute items-center justify-between w-full h-20 border-solid border-b-2 border-[#F9F6F2]">
+    <div class="h-full flex items-center">
+        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
+            <a class="font-lato tracking-widest font-medium text-base uppercase">shop</a>
+        </div>
+        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
+            <a class="font-lato tracking-widest font-medium text-base uppercase">our story</a>
+        </div>
+        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
+            <a class="font-lato tracking-widest font-medium text-base uppercase">journal</a>
+        </div>
+    </div>
+    <div>
+        <img class="h-[35px] w-[267px]" src="{{ 'saintjo-header-logo.png' | asset_url }}" alt="Saint Jo Logo" />
+    </div>
+    <div class="flex items-center h-full border-solid border-l-2 border-[#F9F6F2] divide-x divide-x-2 divide-[#F9F6F2]">
+        <div class="h-full flex items-center justify-center px-12 py-4 cursor-pointer transition-all text-white hover:text-[#212121] hover:bg-[#F9F6F2]">
+            <a class="font-lato tracking-widest font-medium text-base uppercase">usd / en</a>
+        </div>
+        <div class="h-full flex items-center justify-center px-12 py-4 cursor-pointer transition-all text-white hover:text-[#212121] hover:bg-[#F9F6F2]">
+            <a class="font-lato tracking-widest font-medium text-base uppercase">account</a>
+        </div>
+        <div class="h-full flex items-center justify-center px-12 py-4 cursor-pointer transition-all text-white hover:text-[#212121] hover:bg-[#F9F6F2]">
+            <a class="font-lato tracking-widest font-medium text-base uppercase">cart</a>
+        </div>
+    </div>
 </nav>

@@ -4,9 +4,13 @@
     "sections": {
         "navbar": {
             "type": "navbar"
+        },
+        "banner": {
+            "type": "banner"
         }
     },
     "order": [
+        "banner",
         "navbar"
     ]
 }
