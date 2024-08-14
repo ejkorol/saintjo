@@ -1,11 +1,12 @@
 {
   "name": "Index",
   "sections": {
-    "hero": {
-      "type": "hero"
-    }
+    "hero": { "type": "hero" },
+    "flag": { "type": "flag" },
+    "gallery": { "type": "gallery" },
+    "quote-block": { "type": "quote-block" },
+    "showcase": { "type": "showcase" },
+    "sets": { "type": "sets" }
   },
-  "order": [
-    "hero"
-  ]
+  "order": ["hero", "flag", "gallery", "quote-block", "showcase", "sets"]
 }
