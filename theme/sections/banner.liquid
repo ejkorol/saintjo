@@ -1,3 +1,20 @@
 <div class="flex items-center justify-center h-12 bg-[#5B5546]">
-    <h3 class="font-lato text-sm font-medium tracking-wider cursor-pointer uppercase text-white">Enjoy complimentary standard delivery and samples with all orders. +</h3>
+    <h3 class="font-lato text-sm font-medium tracking-wider cursor-pointer uppercase text-white">{{ section.settings.banner-text }}</h3>
 </div>
+
+{%  schema  %}
+    {
+        "name": "Banner",
+        "enabled_on": {
+            "groups": ["custom.navbar"]
+        },
+        "settings": [
+            {
+                "type": "text",
+                "id": "banner-text",
+                "label": "Text",
+                "default": "Enjoy complimentary standard delivery and samples with all orders. +"
+            }
+        ]
+    }
+{% endschema %}

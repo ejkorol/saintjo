@@ -1,5 +1,5 @@
 <section class="flex items-center justify-center h-24 bg-[#E1DED1]">
-    <p class="font-lato text-md tracking-wider font-semibold text-[#5B5546] uppercase">clean and sustainable. inner beauty and outer beauty. all without compromise.</p>
+    <p class="font-lato text-md tracking-wider font-semibold text-[#5B5546] uppercase">{{ section.settings.title }}</p>
 </section>
 
 {% schema %}
@@ -8,7 +8,14 @@
         "enabled_on": {
             "templates": ["*"]
         },
-        "settings": [],
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "clean and sustainable. inner beauty and outer beauty. all without compromise"
+            }
+        ],
         "presets": []
     }
 {% endschema %}

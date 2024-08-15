@@ -1,12 +1,12 @@
 <section class="flex flex-col items-center justify-center p-16 bg-[#F9F6F2] h-96">
     <div class="flex flex-col gap-8">
-        <p class="text-3xl font-lato tracking-wide text-[#5B5546]">Saint Jō was born out of the lack in the skincare industry. Lack of efficacious skincare that doesn’t sacrifice human wellbeing for luxurious experience. Saint Jō is a nod to everyone looking for effective skincare that keeps their wellbeing at the forefront. Because you deserve a beauty routine without compromise.</p>
-        <button class="relative flex items-center w-fit gap-4 font-lato text-sm uppercase tracking-wider cursor-pointer">
-        shop our collection
-        <span>
-            <img src="../assets/arrow.svg"/>
-        </span>
-        </button>
+        <p class="text-3xl font-lato tracking-wide text-[#5B5546]">{{ section.settings.quote }}</p>
+            <a href="{{ section.settings.button_link }}" class="relative flex items-center w-fit gap-4 font-lato text-sm uppercase tracking-wider cursor-pointer">
+                {{ section.settings.button }}
+                <span>
+                    <img src="../assets/arrow.svg"/>
+                </span>
+            </a>
     </div>
 </section>
 
@@ -16,7 +16,25 @@
         "enabled_on": {
             "templates": ["*"]
         },
-        "settings": [],
+        "settings": [
+            {
+                "type": "textarea",
+                "id": "quote",
+                "label": "Quote",
+                "default": "Elevate your skincare ritual with Saint Jō, where potency meets purity. We perform the necessary research to unlock ingredients' full potential. No matter your skin concerns, each formulation is crafted with precision to deliver visible results without sacrificing the sensorial experience longed for by beauty connoisseurs worldwide."
+            },
+            {
+                "type": "text",
+                "id": "button",
+                "label": "Button Text",
+                "default": "shop our collection"
+            },
+            {
+                "type": "page",
+                "id": "button_link",
+                "label": "Page Link"
+            }
+        ],
         "presets": []
     }
 {% endschema %}
