@@ -1,7 +1,21 @@
-<section class="flex items-end h-svh w-full bg-[url('../assets/hero-bg-placeholder.png')] bg-no-repeat bg-center bg-cover">
+<section class="flex relative items-end h-svh w-full">
+    {% if section.settings.hero_image %}
+    <img class="absolute h-full w-full object-cover z-[-100]" src={{ section.settings.hero_image | image_url }} />
     <div class="flex w-full items-center justify-center mb-32">
-        <h1 class="text-4xl uppercase font-bold text-white font-americana cursor-pointer hover:underline transition-all">Shop Skincare</h1>
+        <a href="{{ section.settings.button_link }}" class="text-4xl uppercase font-bold text-white font-americana cursor-pointer hover:underline transition-all">
+            {{ section.settings.label }}
+        </a>
     </div>
+
+    {% elsif section.settings.image == null %}
+    <img class="absolute h-full w-full object-cover z-[-100]" src="../assets/hero-bg-placeholder.png" />
+    <div class="flex w-full items-center justify-center mb-32">
+        <a href="{{ section.settings.button_link }}" class="text-4xl uppercase font-bold text-white font-americana cursor-pointer hover:underline transition-all">
+            {{ section.settings.label }}
+        </a>
+    </div>
+
+    {% endif %}
 </section>
 
 {% schema %}
@@ -10,7 +24,24 @@
     "enabled_on": {
         "templates": ["*"]
     },
-    "settings": [],
+    "settings": [
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "shop skincare"
+        },
+        {
+            "type": "page",
+            "id": "button_link",
+            "label": "Button Link"
+        },
+        {
+            "type": "image_picker",
+            "id": "hero_image",
+            "label": "Hero Image"
+        }
+    ],
     "presets": []
 }
 {% endschema %}
