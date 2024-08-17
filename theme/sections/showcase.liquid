@@ -1,6 +1,6 @@
 <section class="bg-[#F9F6F2] w-full h-[1000px] p-16">
     <article class="flex relative items-center justify-center w-full h-full rounded-xl">
-    <img class="brightness-50 absolute h-full w-full object-cover rounded-xl" src={{ section.settings.showcase_image }} />
+    <img class="brightness-50 absolute h-full w-full object-cover rounded-xl" src={{ section.settings.showcase_image | image_url }} />
         <div class="flex flex-col gap-8 items-center justify-center w-2/5 text-center z-[100]">
             <h3 class="text-3xl font-americana text-white uppercase">{{ section.settings.text }}</h3>
             <a href="{{ section.settings.button_link }}" class="py-2 px-4 w-full max-w-[165px] font-lato text-sm uppercase border-[1px] border-solid border-[#F9F6F2] rounded-full text-white cursor-pointer transition-all hover:bg-[#F9F6F2] hover:text-black">{{ section.settings.button_text }}</a>
