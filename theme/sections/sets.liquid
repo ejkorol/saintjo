@@ -19,8 +19,8 @@
                             <h4 class="font-americana text-3xl uppercase text-black">{{ block.settings.set-name }}</h4>
                             <p class="font-lato text-xs uppercase text-black font-semibold tracking-wider">{{ block.settings.set-category }}</p>
                         </div>
-                        <div>
-                            <p class="font-americana text-3xl text-black">{{ block.settings.product.price }}</p>
+                        <div class="z-[1000]">
+                            <p class="font-americana text-3xl text-black">{{ block.settings.product.price | money }}</p>
                         </div>
                     </div>
                     <div class="border-t-[1px] border-black border-solid z-[1000]">
