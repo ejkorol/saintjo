@@ -1,84 +1,45 @@
 <section class="flex flex-col p-16 bg-[#F9F6F2] w-full">
-    <h4 class="font-lato text-md uppercase tracking-wide font-semibold text-[#5B5546]">save with sets</h4>
+
+    <h4 class="font-lato text-md uppercase tracking-wide font-semibold text-[#5B5546]">
+        {{ section.settings.section-header }}
+    </h4>
 
     <section class="flex gap-16 mt-12">
+    {% for block in section.blocks %}
+        {% case block.type %}
 
-    <!-- CARD -->
-    <div class="flex items-center justify-between gap-16">
-        <article class="w-full h-full">
-            <div class="flex h-[587px] p-8 rounded-lg flex-col justify-between bg-[url('../assets/set-placeholder.png')] bg-no-repeat bg-center bg-cover">
-                <div class="flex items-center justify-between">
-                    <div class="flex flex-col">
-                        <h4 class="font-americana text-3xl uppercase text-black">starter set</h4>
-                        <p class="font-lato text-xs uppercase text-black font-semibold tracking-wider">essentials</p>
+        {% when 'product' %}
+        <!-- CARD -->
+        <div class="flex items-center justify-between gap-16">
+            <article class="w-full h-full">
+                <div class="relative flex h-[587px] p-8 rounded-lg flex-col justify-between">
+                <img class="absolute left-0 right-0 top-0 bottom-0 h-full w-full object-cover rounded-[20px]" src={{ block.settings.product.featured_image | image_url }} />
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-col z-[1000]">
+                            <h4 class="font-americana text-3xl uppercase text-black">{{ block.settings.set-name }}</h4>
+                            <p class="font-lato text-xs uppercase text-black font-semibold tracking-wider">{{ block.settings.set-category }}</p>
+                        </div>
+                        <div>
+                            <p class="font-americana text-3xl text-black">{{ block.settings.product.price }}</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="font-americana text-3xl text-black">$120.00</p>
+                    <div class="border-t-[1px] border-black border-solid z-[1000]">
+                        <div class="w-2/3">
+                            <p class="font-lato text-md mt-4">{{ block.settings.product-description }}</p>
+                        </div>
                     </div>
                 </div>
-                <div class="border-t-[1px] border-black border-solid">
-                    <div class="w-2/3">
-                        <p class="font-lato text-md mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
+                <div class="px-4 pt-8 z-[1000]">
+                    <a href={{ block.settings.button-link }} class="flex items-center justify-center text-center border-black border-[1px] rounded-full py-2 w-full uppercase font-lato text-sm transition-all hover:bg-black hover:text-white">
+                        {{ block.settings.button-text }}
+                    </a>
                 </div>
-            </div>
-            <div class="px-4 pt-8">
-                <button class="flex items-center justify-center text-center border-black border-[1px] rounded-full py-2 w-full uppercase font-lato text-sm transition-all hover:bg-black hover:text-white">shop now</button>
-            </div>
-        </article>
-    </div>
+            </article>
+        </div>
+        {% endcase %}
+    {% endfor %}
 
-    <!-- CARD -->
-    <div class="flex items-center justify-between gap-16">
-        <article class="w-full h-full">
-            <div class="flex h-[587px] p-8 rounded-lg flex-col justify-between bg-[url('../assets/set-placeholder.png')] bg-no-repeat bg-center bg-cover">
-                <div class="flex items-center justify-between">
-                    <div class="flex flex-col">
-                        <h4 class="font-americana text-3xl uppercase text-black">starter set</h4>
-                        <p class="font-lato text-xs uppercase text-black font-semibold tracking-wider">essentials</p>
-                    </div>
-                    <div>
-                        <p class="font-americana text-3xl text-black">$120.00</p>
-                    </div>
-                </div>
-                <div class="border-t-[1px] border-black border-solid">
-                    <div class="w-2/3">
-                        <p class="font-lato text-md mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="px-4 pt-8">
-                <button class="flex items-center justify-center text-center border-black border-[1px] rounded-full py-2 w-full uppercase font-lato text-sm transition-all hover:bg-black hover:text-white">shop now</button>
-            </div>
-        </article>
-    </div>
-
-    <!-- CARD -->
-    <div class="flex items-center justify-between gap-16">
-        <article class="w-full h-full">
-            <div class="flex h-[587px] p-8 rounded-lg flex-col justify-between bg-[url('../assets/set-placeholder.png')] bg-no-repeat bg-center bg-cover">
-                <div class="flex items-center justify-between">
-                    <div class="flex flex-col">
-                        <h4 class="font-americana text-3xl uppercase text-black">starter set</h4>
-                        <p class="font-lato text-xs uppercase text-black font-semibold tracking-wider">essentials</p>
-                    </div>
-                    <div>
-                        <p class="font-americana text-3xl text-black">$120.00</p>
-                    </div>
-                </div>
-                <div class="border-t-[1px] border-black border-solid">
-                    <div class="w-2/3">
-                        <p class="font-lato text-md mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="px-4 pt-8">
-                <button class="flex items-center justify-center text-center border-black border-[1px] rounded-full py-2 w-full uppercase font-lato text-sm transition-all hover:bg-black hover:text-white">shop now</button>
-            </div>
-        </article>
-    </div>
     </section>
-
 </section>
 
 {% schema %}
@@ -87,7 +48,53 @@
         "enabled_on": {
             "templates": ["*"]
         },
-        "settings": [],
-        "presets": []
+        "settings": [
+            {
+                "type": "text",
+                "id": "section-header",
+                "label": "Section Header",
+                "default": "save with sets"
+            }
+        ],
+        "presets": [],
+        "max_blocks": 3,
+        "blocks": [
+            {
+                "name": "product",
+                "type": "product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    },
+                    {
+                        "type": "text",
+                        "id": "set-name",
+                        "label": "Set Name"
+                    },
+                    {
+                        "type": "text",
+                        "id": "set-category",
+                        "label": "Set Category"
+                    },
+                    {
+                        "type": "text",
+                        "id": "product-description",
+                        "label": "Product Description"
+                    },
+                    {
+                        "type": "page",
+                        "id": "button-link",
+                        "label": "Button Link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button-text",
+                        "label": "Button Text"
+                    }
+                ]
+            }
+        ]
     }
 {% endschema %}
