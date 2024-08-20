@@ -1,14 +1,19 @@
 <nav class="flex absolute items-center justify-between w-full h-20 border-solid border-b-2 border-[#F9F6F2] z-[1000]">
 
-    <div class="h-full flex items-center">
-        {% for link in section.settings.menu-left %}
-            <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
-                <a href={{ link.url }} class="font-lato tracking-widest font-medium text-base uppercase">
-                    {{ link.title }}
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'link_list' %}
+                <div class="h-full flex items-center">
+                    {% for link in block.settings.menu.links %}
+                        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
+                            <a href={{ link.url }} class="font-lato tracking-widest font-medium text-base uppercase">
+                                {{ link.title }}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+        {% endcase %}
+    {% endfor %}
 
     {%  comment  %}
     <!-- static menu left-->
@@ -51,6 +56,20 @@
                 "type": "link_list",
                 "id": "menu-left",
                 "label": "Navbar Menu Left"
+            }
+        ],
+        "max_blocks": 1,
+        "blocks": [
+            {
+                "type": "link_list",
+                "name": "menu",
+                "settings": [
+                    {
+                        "type": "link_list",
+                        "id": "menu",
+                        "label": "menu"
+                    }
+                ]
             }
         ]
     }
