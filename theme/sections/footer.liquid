@@ -1,9 +1,28 @@
-<footer class="bg-[#5B5546] p-11 h-[722px] text-white">
-    <section class="flex justify-between">
-        <div class="flex w-2/3 gap-20">
+<footer class="bg-[#5B5546] p-11 h-[722px] text-white flex flex-col justify-between">
+    <section class="flex justify-between mt-24">
+        <div class="flex gap-24">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'link_list' %}
+                        <div>
+                            <h4 class="uppercase font-lato font-medium">
+                                {{ block.settings.menu.title }}
+                            </h4>
+                            <ul class="mt-12 font-lato font-light text-sm uppercase flex flex-col gap-4 tracking-wider">
+                                {% for link in block.settings.menu.links %}
+                                    <li class="cursor-pointer transition-all hover:underline">
+                                        <a href={{ link.url }}>{{ link.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endcase %}
+            {% endfor %}
+            {%  comment  %}
+            <!-- static content -->
             <div>
-                <h4 class="uppercase font-lato">shop</h4>
-                <ul class="mt-12 font-lato uppercase flex flex-col gap-4 tracking-wider">
+                <h4 class="uppercase font-lato font-medium">shop</h4>
+                <ul class="mt-12 font-lato font-light text-sm uppercase flex flex-col gap-4 tracking-wider">
                     <li class="cursor-pointer transition-all hover:underline">shop all</li>
                     <li class="cursor-pointer transition-all hover:underline">skincare</li>
                     <li class="cursor-pointer transition-all hover:underline">supplements</li>
@@ -12,8 +31,8 @@
                 </ul>
             </div>
             <div>
-                <h4 class="uppercase font-lato">about</h4>
-                <ul class="mt-12 font-lato uppercase flex flex-col gap-4 tracking-wider">
+                <h4 class="uppercase font-lato font-medium">about</h4>
+                <ul class="mt-12 font-lato font-light text-sm uppercase flex flex-col gap-4 tracking-wider">
                     <li class="cursor-pointer transition-all hover:underline">our story</li>
                     <li class="cursor-pointer transition-all hover:underline">meet the founder</li>
                     <li class="cursor-pointer transition-all hover:underline">sustainability</li>
@@ -22,8 +41,8 @@
                 </ul>
             </div>
             <div>
-                <h4 class="uppercase font-lato">customer service</h4>
-                <ul class="mt-12 font-lato uppercase flex flex-col gap-4 tracking-wider">
+                <h4 class="uppercase font-lato font-medium">customer service</h4>
+                <ul class="mt-12 font-lato text-sm font-light uppercase flex flex-col gap-4 tracking-wider">
                     <li class="cursor-pointer transition-all hover:underline">returns & refunds</li>
                     <li class="cursor-pointer transition-all hover:underline">shipping & delivery</li>
                     <li class="cursor-pointer transition-all hover:underline">privacy policy</li>
@@ -32,29 +51,67 @@
                 </ul>
             </div>
             <div>
-                <h4 class="uppercase font-lato">contact</h4>
-                <ul class="mt-12 font-lato uppercase flex flex-col gap-4 tracking-wider">
-                    <li class="cursor-pointer transition-all hover:underline">
-                        get in touch at
+                <h4 class="uppercase font-lato font-medium">contact</h4>
+                <ul class="mt-12 flex flex-col text-sm gap-4 tracking-wider">
+                    <li>
+                        <span class="font-lato font-medium uppercase">
+                            get in touch at
+                        </span>
                         <br/>
-                        <a class="" href="">
-                            HELLO@SHOPSAINTJO.COM
+                        <a class="font-lato font-light transition-all hover:underline" href="mailto:hello@shopsaintjo.com?">
+                            Hello@shopsaintjo.com
                         </a>
                     </li>
                 </ul>
             </div>
+            {% endcomment %}
         </div>
-        <div class="flex">
-            <div class="flex flex-col">
-                <p>subscribe</p>
+    </section>
+    <section class="flex justify-between items-end">
+        <div class="flex items-end">
+            <div>
+                <img class="w-[600px]" src={{ 'saintjo-inline-logo.png' |  asset_url }} alt="saintjo logo"/>
+            </div>
+            <div class="ml-4">
+                {%  comment  %}
+                    <!-- static -->
+                    <p class="font-americana">Some brands are clean, others are results-driven. <br/> We say, <span class="italic">“why compromise?”</span></p>
+                {% endcomment %}
+                <span class="font-americana">
+                    {{ section.settings.quote }}
+                </span>
             </div>
         </div>
-    </section>
-    <section>
         <div>
-            <div></div>
-            <div></div>
+            <img class="w-[90px] h-[90px]" src={{ 'saintjo-emblem.png' | asset_url }} alt="saintjo emblem" />
         </div>
-        <div></div>
     </section>
 </footer>
+
+{%  schema  %}
+    {
+        "name": "Footer",
+        "settings": [
+            {
+                "type": "richtext",
+                "id": "quote",
+                "default": "<p>Some brands are clean, others are results-drive. \n We say, <i>'Why compromise?'</i></i>",
+                "label": "Quote"
+            }
+        ],
+        "blocks": [
+            {
+                "name": "section",
+                "type": "link_list",
+                "settings": [
+                    {
+                        "type": "link_list",
+                        "id": "menu",
+                        "default": "footer",
+                        "label": "Menu"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
