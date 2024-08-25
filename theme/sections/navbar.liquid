@@ -1,76 +1,43 @@
 <nav class="flex absolute items-center justify-between w-full h-20 border-solid border-b-2 border-[#F9F6F2] z-[1000]">
-
-    {% for block in section.blocks %}
-        {% case block.type %}
-            {% when 'link_list' %}
-                <div class="h-full flex items-center">
-                    {% for link in block.settings.menu.links %}
-                        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
-                            <a href={{ link.url }} class="font-lato tracking-widest font-medium text-base uppercase">
-                                {{ link.title }}
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-        {% endcase %}
-    {% endfor %}
-
-    {%  comment  %}
-    <!-- static menu left-->
+    <!-- Left Menu Section -->
     <div class="h-full flex items-center">
-        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
-            <a class="font-lato tracking-widest font-medium text-base uppercase">shop</a>
-        </div>
-        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
-            <a class="font-lato tracking-widest font-medium text-base uppercase">our story</a>
-        </div>
-        <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
-            <a class="font-lato tracking-widest font-medium text-base uppercase">journal</a>
-        </div>
+        {% for link in linklists[section.settings.menu-left].links %}
+            <div class="flex items-center justify-center h-full text-white transition-all hover:bg-[#F9F6F2] hover:text-black px-12 py-4 cursor-pointer">
+                <a href="{{ link.url }}" class="font-lato tracking-widest font-medium text-base uppercase">
+                    {{ link.title }}
+                </a>
+            </div>
+        {% endfor %}
     </div>
-  {% endcomment %}
 
+    <!-- Logo Section -->
     <div>
-        <img class="h-[35px] w-[267px]" src={{ 'saintjo-header-logo.png' | asset_url }} alt="Saint Jo Logo" />
+        <img class="h-[35px] w-[267px]" src="{{ 'saintjo-header-logo.png' | asset_url }}" alt="Saint Jo Logo" />
     </div>
 
+    <!-- Right Menu Section -->
     <div class="flex items-center h-full border-solid border-l-2 border-[#F9F6F2] divide-x divide-x-2 divide-[#F9F6F2]">
         <div class="h-full flex items-center justify-center px-12 py-4 cursor-pointer transition-all text-white hover:text-[#212121] hover:bg-[#F9F6F2]">
             <a class="font-lato tracking-widest font-medium text-base uppercase">usd / en</a>
         </div>
         <div class="h-full flex items-center justify-center px-12 py-4 cursor-pointer transition-all text-white hover:text-[#212121] hover:bg-[#F9F6F2]">
-            <a class="font-lato tracking-widest font-medium text-base uppercase" href={{ routes.account_url }}>account</a>
+            <a class="font-lato tracking-widest font-medium text-base uppercase" href="{{ routes.account_url }}">account</a>
         </div>
         <div class="h-full flex items-center justify-center px-12 py-4 cursor-pointer transition-all text-white hover:text-[#212121] hover:bg-[#F9F6F2]">
-            <a class="font-lato tracking-widest font-medium text-base uppercase" href={{ routes.cart_url }}>cart</a>
+            <a class="font-lato tracking-widest font-medium text-base uppercase" href="{{ routes.cart_url }}">cart</a>
         </div>
     </div>
-
 </nav>
 
 {% schema %}
-    {
-        "name": "Navbar",
-        "settings": [
-            {
-                "type": "link_list",
-                "id": "menu-left",
-                "label": "Navbar Menu Left"
-            }
-        ],
-        "max_blocks": 1,
-        "blocks": [
-            {
-                "type": "link_list",
-                "name": "menu",
-                "settings": [
-                    {
-                        "type": "link_list",
-                        "id": "menu",
-                        "label": "menu"
-                    }
-                ]
-            }
-        ]
-    }
+{
+    "name": "Navbar",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "menu-left",
+            "label": "Navbar Menu Left"
+        }
+    ]
+}
 {% endschema %}
