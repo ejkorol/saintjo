@@ -1,0 +1,21 @@
+{
+    "name": "About",
+    "sections": {
+        "about-hero": { "type": "about-hero" },
+        "about-image": { "type": "about-image" },
+        "about-story": { "type": "about-story" },
+        "about-founder": { "type": "about-founder" },
+        "about-values": { "type": "about-values" },
+        "about-cards": { "type": "about-cards" },
+        "about-ingredients": { "type": "about-ingredients"}
+    },
+    "order": [
+        "about-hero",
+        "about-image",
+        "about-story",
+        "about-founder",
+        "about-values",
+        "about-cards",
+        "about-ingredients"
+    ]
+}
