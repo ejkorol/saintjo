@@ -1,0 +1,176 @@
+<style>
+    html { scroll-behavior: smooth; }
+</style>
+
+<script>
+const navigate = (link) => {
+    const element = document.getElementById(link);
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+        card.addEventListener("click", function () {
+            const blockId = this.getAttribute("data-block-id");
+            const cardIndicator = this.querySelector(".card__indicator");
+            const cardContent = this.querySelector(".card__content");
+
+            cardContent.classList.toggle("hidden");
+            cardIndicator.textContent = cardContent.classList.contains("hidden") ? "+" : "-";
+        });
+    });
+});
+</script>
+
+<!-- page.about.liquid -->
+<section class="h-svh w-full flex items-center justify-center">
+    <div class="text-center flex flex-col gap-16 items-center justify-center">
+        <div>
+            <ul class="flex gap-16 uppercase font-lato text-sm font-semibold tracking-wider text-[#5B5546]">
+                <li class="cursor-pointer" onclick="navigate('our-story')">our story</li>
+                <li class="cursor-pointer">founder</li>
+                <li class="cursor-pointer">values</li>
+                <li class="cursor-pointer">ingredients</li>
+            </ul>
+        </div>
+        <div class="w-2/3 text-center">
+            <h2 class="font-lato leading-10 font-regular text-[#5B5546] tracking-wider text-2xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h2>
+        </div>
+    </div>
+</section>
+
+<!-- about-hero -->
+<section class="relative h-[75svh] w-full">
+    <img class="absolute h-full w-full object-cover" alt="hero-image" src="../assets/hero-bg-placeholder.png" />
+</section>
+
+<!-- about-story -->
+<section class="relative flex flex-col h-[75svh] w-full justify-center items-center bg-[#5B5546]" id="our-story">
+    <div class="flex flex-col gap-16 w-full items-center justify-center">
+        <div class="text-center w-2/5">
+            <h3 class="font-lato text-sm font-semibold uppercase text-white tracking-wider">beauty without compromise</h3>
+            <p class="mt-6 font-lato font-medium text-white">Saint Jō was born out of the lack in the skincare industry. Lack of efficacious skincare that doesn’t sacrifice human wellbeing for luxurious experience. Saint Jō is a nod to everyone looking for effective skincare that keeps their wellbeing at the forefront. Because you deserve a beauty routine without compromise.</p>
+        </div>
+
+        <div class="text-center w-2/5">
+            <h3 class="font-lato text-sm font-semibold uppercase text-white tracking-wider">beyond clean</h3>
+            <p class="mt-6 font-lato font-medium text-white">Our commitment to clean beauty extends beyond its formulations. The brand maintains strict standards of sustainability, ensuring that every product is environmentally conscious and cruelty free. With Saint Jo, indulgence is not a luxury, it's a mindful choice that honors your body and the planet.</p>
+        </div>
+    </div>
+    <div class="absolute text-center bottom-0 mb-12">
+        <p class="font-lato font-medium text-sm text-white uppercase tracking-wider">words from our founder</p>
+    </div>
+</section>
+
+<!-- about-founder -->
+<section class="h-svh w-full flex divide-x-2 divide-solid divide-[#5B5546]">
+    <div class="relative w-1/2 h-full">
+        <img class="absolute h-full w-full object-cover" src="../assets/hero-bg-placeholder.png" alt="founder-image" />
+    </div>
+    <div class="bg-[#EBECE6] w-1/2 flex flex-col justify-center px-32">
+        <h3 class="font-americana text-3xl uppercase tracking text-[#5B5546]">Allyse Cirillo</h3>
+        <div class="flex flex-col gap-6 mt-12">
+            <p class="font-lato text-sm text-[#5B5546]">Allyse Cirillo, a 34-year-old trailblazer who embodies confidence and leadership, is the driving force behind the brand.</p>
+            <p class="font-lato text-sm text-[#5B5546]">After years of thriving in the corporate world, Allyse embarked on a transformative journey to revolutionize the skincare & supplement industry. Fueled by her new passion for clean living and her expertise in product development, she sought to address a critical gap in the market.</p>
+            <p class="font-lato text-sm text-[#5B5546]">Allyse founded Saint Jo to solve a common problem: the choice between clean ingredients and effective results. Her skincare & supplement  line, driven by a vision of wellness that blends performance with purity, sets new standards of excellence and luxury. With innovative formulas praised for efficacy and safety, Allyse's dedication has revolutionized the industry.</p>
+            <p class="font-lato text-sm text-[#5B5546]">Passionate about sharing these formulas with women worldwide, Allyse's mission is to create clean, effective formulas for women to love and trust. Through Saint Jo, she aims to empower women to prioritize their health and well-being without any compromise.</p>
+        </div>
+    </div>
+</section>
+
+<!-- about-values -->
+<section class="h-[50svh] w-full flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center text-center w-3/5 gap-6">
+        <h4 class="font-lato text-sm font-semibold uppercase tracking-wider text-[#5B5546]">our values</h4>
+        <p class="font-lato text-2xl leading-10 tracking-wide text-[#5B5546]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    </div>
+</section>
+
+<!-- about-cards -->
+<section class="grid grid-cols-2 h-svh w-full">
+
+    <article class="relative h-full w-full">
+        <img class="brightness-50 absolute h-full w-full object-cover" alt="ingredient" src="../assets/hero-bg-placeholder.png"/>
+        <div class="absolute bottom-0 flex flex-col px-16 py-16 gap-4">
+            <h4 class="font-americana text-4xl text-white uppercase">sustainability</h4>
+            <hr class="border-t-2" />
+            <p class="font-lato text-white text-sm tracking-wider">From researching and choosing the most potent, effective and clean ingredients, to vetting where and how they're sourced, all of our formulations are developed with an approach  that is conscious of people and the  planet.</p>
+        </div>
+    </article>
+
+    <article class="relative h-full w-full">
+        <img class="brightness-50 absolute h-full w-full object-cover" alt="ingredient" src="../assets/hero-bg-placeholder.png"/>
+        <div class="absolute bottom-0 flex flex-col px-16 py-16 gap-4">
+            <h4 class="font-americana text-4xl text-white uppercase">quality</h4>
+            <hr class="border-t-2" />
+            <p class="font-lato text-white text-sm tracking-wider">We seek out ingredients that are balancing, transformative, nourishing and clean. The result is ground-breaking formulations that feel as great as they look.</p>
+        </div>
+    </article>
+
+    <article class="relative h-full w-full">
+        <img class="brightness-50 absolute h-full w-full object-cover" alt="ingredient" src="../assets/hero-bg-placeholder.png"/>
+        <div class="absolute bottom-0 flex flex-col px-16 py-16 gap-4">
+            <h4 class="font-americana text-4xl text-white uppercase">luxury</h4>
+            <hr class="border-t-2" />
+            <p class="font-lato text-white text-sm tracking-wider">We relentlessly pursue world-class results. Clean beauty should never sacrifice experience and performance. Our formulations rival that  of conventional beauty as we deliver incredibly comfortable and innovative products that are designed to improve skin from the inside out.  We work with the most distinguished labs in the world to create products made from ingredients that are as luxurious and high quality as it gets.</p>
+        </div>
+    </article>
+
+    <article class="relative h-full w-full">
+        <img class="brightness-50 absolute h-full w-full object-cover" alt="ingredient" src="../assets/hero-bg-placeholder.png"/>
+        <div class="absolute bottom-0 flex flex-col px-16 py-16 gap-4">
+            <h4 class="font-americana text-4xl text-white uppercase">environment</h4>
+            <hr class="border-t-2" />
+            <p class="font-lato text-white text-sm tracking-wider">We believe clean, eco-conscious ingredients and formulas lose their impact if they're packaged and shipped in material that harm the environment and leech harmful toxins into the earth and body. We're committed to sustainable, reusable glass and wood encased packaging that promotes wellbeing  and long-term sustainability.</p>
+        </div>
+    </article>
+
+</section>
+
+<!-- about-ingredients-hero -->
+<section class="h-[50svh] bg-[#F5F5F5] w-full flex items-center justify-center text-center">
+    <div class="flex flex-col items-center justify-center text-center text-[#5B5546] w-2/5 gap-16">
+        <h4 class="font-lato text-sm font-semibold tracking-wider uppercase">ingredients</h4>
+        <h5 class="font-lato text-3xl">Our collection is 100% natural, made from sustainably sourced, clean ingredients.</h5>
+        <p class="font-lato text-md">We work with family run suppliers in the UK and France to source the highest quality organic ingredients. Our suppliers are committed to protecting local communities and their environment, promoting local agriculture, and contributing to sustainable development projects. <br/> <br/>Our products are lovingly produced by hand in small batches, which means less waste and avoids excess stock.</p>
+    </div>
+</section>
+
+<!-- about-ingredients-table -->
+<section class="h-full w-full bg-[#F5F5F5] grid grid-cols-6 gap-8 px-8 py-8">
+
+    <article class="card flex flex-col border-t-2 border-[#5B5546] pt-4 cursor-pointer" id="block-1" data-block-id="1">
+        <!-- header -->
+        <div class="w-full">
+            <a class="card__button font-lato uppercase font-medium text-lg w-full flex justify-between cursor-pointer" onclick="expandCard()">
+                <span>andiroba</span>
+                <span class="card__indicator">+</span>
+            </a>
+        </div>
+
+        <!-- content -->
+        <div class="card__content hidden mt-4 flex flex-col transition-all gap-4">
+            <div class="text-justify">
+                <p class="font-lato text-md tracking-wide text-[#BDBDBD] capitalize">benefits</p>
+                <p class="font-lato text-md font-semibold text-[#212121]">Aids in healing damaged skin via its high myristic acid content. Provides a natural protective barrier for the skin. Anti-inflamatory, and all full of shit vitamins.</p>
+            </div>
+            <div class="text-justify">
+                <p class="font-lato text-md tracking-wide text-[#BDBDBD] capitalize">ancient usage</p>
+                <p class="font-lato text-md font-semibold text-[#212121]">Andiroba Oil has been used as a natural treatment for inflammation and joint pain for hundreds of years.</p>
+            </div>
+            <div class="text-justify">
+                <p class="font-lato text-md tracking-wide text-[#bdbdbd] capitalize">sourced</p>
+                <p class="font-lato text-md font-semibold text-[#212121]">amazon rainforest, brazil</p>
+            </div>
+            <div class="text-justify">
+                <p class="font-lato text-md tracking-wide text-[#bdbdbd] capitalize">found in</p>
+                <p class="font-lato text-md font-semibold text-[#212121]">Ground - Vata Body Oil</p>
+            </div>
+        </div>
+    </article>
+
+</section>
