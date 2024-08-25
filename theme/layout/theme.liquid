@@ -7,6 +7,10 @@
     <title>Saint Jo</title>
 
     <!-- Styles -->
+
+    <style>
+      html { scroll-behavior: smooth; }
+    </style>
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
     {{ content_for_header }}
