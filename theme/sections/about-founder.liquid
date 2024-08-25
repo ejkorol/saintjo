@@ -1,0 +1,43 @@
+<section class="h-svh w-full flex divide-x-2 divide-solid divide-[#5B5546]" id="founder">
+    <div class="relative w-1/2 h-full">
+        <img class="absolute h-full w-full object-cover" alt="founder-image" src={{ section.settings.founder-image | image_url }} />
+    </div>
+    <div class="bg-[#EBECE6] w-1/2 flex flex-col justify-center px-32">
+        <h3 class="font-americana text-3xl uppercase tracking text-[#5B5546]">
+            {{ section.settings.founder-header }}
+        </h3>
+        <div class="flex flex-col gap-6 mt-12">
+            <p class="font-lato text-sm text-[#5B5546]">
+                {{ section.settings.founder-text }}
+            </p>
+        </div>
+    </div>
+</section>
+
+{%  schema  %}
+{
+    "name": "About Founder",
+    "enabled_on": {
+        "templates": ["*"]
+    },
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "founder-image",
+            "label": "Founder Image"
+        },
+        {
+            "type": "text",
+            "id": "founder-header",
+            "label": "Header",
+            "default": "Allyse Cirillo"
+        },
+        {
+            "type": "textarea",
+            "id": "founder-text",
+            "label": "Text",
+            "default": "<span>Allyse Cirillo, a 34-year-old trailblazer who embodies confidence and leadership, is the driving force behind the brand.</span> <br/><br/> <span> After years of thriving in the corporate world, Allyse embarked on a transformative journey to revolutionize the skincare & supplement industry. Fueled by her new passion for clean living and her expertise in product development, she sought to address a critical gap in the market.</span> <br/><br/> <span> Allyse founded Saint Jo to solve a common problem: the choice between clean ingredients and effective results. Her skincare & supplement  line, driven by a vision of wellness that blends performance with purity, sets new standards of excellence and luxury. With innovative formulas praised for efficacy and safety, Allyse's dedication has revolutionized the industry.</span> <br/><br/> <span> Passionate about sharing these formulas with women worldwide, Allyse's mission is to create clean, effective formulas for women to love and trust. Through Saint Jo, she aims to empower women to prioritize their health and well-being without any compromise.</span>"
+        }
+    ]
+}
+{% endschema %}

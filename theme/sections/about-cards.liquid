@@ -1,0 +1,53 @@
+<section class="grid grid-cols-2 h-svh w-full">
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'card' %}
+                <article class="relative h-full w-full">
+                    <img class="brightness-50 absolute h-full w-full object-cover" alt="ingredient" src={{ block.settings.card-image | image_url }}/>
+                    <div class="absolute bottom-0 flex flex-col px-16 py-16 gap-4">
+                        <h4 class="font-americana text-4xl text-white uppercase">
+                            {{ block.settings.card-header }}
+                        </h4>
+                        <hr class="border-t-2" />
+                        <p class="font-lato text-white text-sm tracking-wider">
+                            {{ block.settings.card-text }}
+                        </p>
+                    </div>
+                </article>
+        {% endcase %}
+    {% endfor %}
+</section>
+
+{%  schema  %}
+{
+    "name": "About Cards",
+    "enabled_on": {
+        "templates": ["*"]
+    },
+    "blocks": [
+        {
+            "name": "card",
+            "type": "card",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "card-header",
+                    "label": "Card Header",
+                    "default": "quality"
+                },
+                {
+                    "type": "textarea",
+                    "id": "card-text",
+                    "label": "Card Text",
+                    "default": "<span>the upmost quality</span>"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "card-image",
+                    "label": "Card Image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

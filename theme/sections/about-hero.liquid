@@ -1,0 +1,34 @@
+<script defer>
+const navigate = (link) => {
+    const element = document.getElementById(link);
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+};
+</script>
+
+<section class="h-svh w-full flex items-center justify-center">
+    <div class="text-center flex flex-col gap-16 items-center justify-center">
+        <div>
+            <ul class="flex gap-16 uppercase font-lato text-sm font-semibold tracking-wider text-[#5B5546]">
+                <li class="cursor-pointer" onclick="navigate('our-story')">our story</li>
+                <li class="cursor-pointer" onclick="navigate('founder')">founder</li>
+                <li class="cursor-pointer" onclick="navigate('values')">values</li>
+                <li class="cursor-pointer" onclick="navigate('ingredients')">ingredients</li>
+            </ul>
+        </div>
+        <div class="w-2/3 text-center">
+            <h2 class="font-lato leading-10 font-regular text-[#5B5546] tracking-wider text-2xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h2>
+        </div>
+    </div>
+</section>
+
+{%  schema  %}
+{
+    "name": "About Hero",
+    "enabled_on": {
+        "templates": ["*"]
+    }
+}
+{% endschema %}

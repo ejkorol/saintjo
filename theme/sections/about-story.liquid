@@ -1,0 +1,78 @@
+<section class="relative flex flex-col h-[75svh] w-full justify-center items-center bg-[#5B5546]" id="our-story">
+    <div class="flex flex-col gap-16 w-full items-center justify-center">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'text' %}
+                    <div class="text-center w-2/5">
+                        <h3 class="font-lato text-sm font-semibold uppercase text-white tracking-wider">
+                            {{ block.settings.story-block-title }}
+                        </h3>
+                        <p class="mt-6 font-lato font-medium text-white">
+                            {{ block.settings.story-block-text }}
+                        </p>
+                    </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+    <div class="absolute text-center bottom-0 mb-12">
+        <p class="font-lato font-medium text-sm text-white uppercase tracking-wider">
+            {{ section.settings.bottom-text }}
+        </p>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "About Story",
+    "enabled_on": {
+        "templates": ["*"]
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "bottom-text",
+            "label": "Bottom Text",
+            "default": "words from our founder"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Story Block",
+            "type": "text",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "Story Block Title",
+                    "id": "story-block-title"
+                },
+                {
+                    "type": "textarea",
+                    "label": "Story Block Text",
+                    "id": "story-block-text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Default",
+            "blocks": [
+                {
+                    "type": "text",
+                    "settings": {
+                        "story-block-title": "beauty without compromise",
+                        "story-block-text": "Saint Jō was born out of the lack in the skincare industry. Lack of efficacious skincare that doesn’t sacrifice human wellbeing for luxurious experience. Saint Jō is a nod to everyone looking for effective skincare that keeps their wellbeing at the forefront. Because you deserve a beauty routine without compromise"
+                    }
+                },
+                {
+                    "type": "text",
+                    "settings": {
+                        "story-block-title": "beyond clean",
+                        "story-block-text": "Our commitment to clean beauty extends beyond its formulations. The brand maintains strict standards of sustainability, ensuring that every product is environmentally conscious and cruelty free. With Saint Jo, indulgence is not a luxury, it's a mindful choice that honors your body and the planet."
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

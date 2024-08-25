@@ -1,0 +1,33 @@
+<section class="h-[50svh] w-full flex flex-col items-center justify-center" id="values">
+    <div class="flex flex-col items-center justify-center text-center w-3/5 gap-6">
+        <h4 class="font-lato text-sm font-semibold uppercase tracking-wider text-[#5B5546]">
+            {{ section.settings.values-header }}
+        </h4>
+        <p class="font-lato text-2xl leading-10 tracking-wide text-[#5B5546]">
+            {{ section.settings.values-text }}
+        </p>
+    </div>
+</section>
+
+{%  schema  %}
+{
+    "name": "About Values",
+    "enabled_on": {
+        "templates": ["*"]
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "values-header",
+            "label": "Header",
+            "default": "our values"
+        },
+        {
+            "type": "textarea",
+            "id": "values-text",
+            "label": "Text",
+            "default": "<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>"
+        }
+    ]
+}
+{% endschema %}

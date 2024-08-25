@@ -1,0 +1,173 @@
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+        card.addEventListener("click", function () {
+            const blockId = this.getAttribute("data-block-id");
+            const cardIndicator = this.querySelector(".card__indicator");
+            const cardContent = this.querySelector(".card__content");
+
+            cardContent.classList.toggle("hidden");
+            cardIndicator.textContent = cardContent.classList.contains("hidden") ? "+" : "-";
+        });
+    });
+});
+</script>
+
+<section class="h-[50svh] bg-[#F5F5F5] w-full flex items-center justify-center text-center" id="ingredients">
+    <div class="flex flex-col items-center justify-center text-center text-[#5B5546] w-2/5 gap-16">
+        <h4 class="font-lato text-sm font-semibold tracking-wider uppercase">
+            {{ section.settings.ingredients-header }}
+        </h4>
+        <h5 class="font-lato text-3xl">
+            {{ section.settings.ingredients-subheader }}
+        </h5>
+        <p class="font-lato text-md">
+            {{ section.settings.ingredients-text }}
+        </p>
+    </div>
+</section>
+
+<section class="h-full w-full bg-[#F5F5F5] grid grid-cols-6 gap-8 px-8 py-8">
+
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'card' %}
+                <article class="card flex flex-col border-t-2 border-[#5B5546] pt-4 cursor-pointer" id="block-1" data-block-id="1">
+                    <div class="w-full">
+                        <a class="card__button font-lato uppercase font-medium text-lg w-full flex justify-between cursor-pointer" onclick="expandCard()">
+                            <span>{{ block.settings.ingredient-name }}</span>
+                            <span class="card__indicator">+</span>
+                        </a>
+                    </div>
+
+                    <div class="card__content hidden mt-4 flex flex-col transition-all gap-4">
+                        <div class="text-justify">
+                            <p class="font-lato text-md tracking-wide text-[#BDBDBD] capitalize">
+                                {{ block.settings.ingredient-benefits }}
+                            </p>
+                            <p class="font-lato text-md font-semibold text-[#212121]">
+                                {{ block.settings.ingredient-benefits-text }}
+                            </p>
+                        </div>
+                        <div class="text-justify">
+                            <p class="font-lato text-md tracking-wide text-[#BDBDBD] capitalize">
+                                {{ block.settings.ingredient-usage }}
+                            </p>
+                            <p class="font-lato text-md font-semibold text-[#212121]">
+                                {{ block.settings.ingredient-usage-text }}
+                            </p>
+                        </div>
+                        <div class="text-justify">
+                            <p class="font-lato text-md tracking-wide text-[#bdbdbd] capitalize">
+                                {{ block.settings.ingredient-source }}
+                            </p>
+                            <p class="font-lato text-md font-semibold text-[#212121]">
+                                {{ block.settings.ingredient-source-text }}
+                            </p>
+                        </div>
+                        <div class="text-justify">
+                            <p class="font-lato text-md tracking-wide text-[#bdbdbd] capitalize">
+                                {{ block.settings.ingredient-found }}
+                            </p>
+                            <p class="font-lato text-md font-semibold text-[#212121]">
+                                {{ block.settings.ingredient-found-text }}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+        {% endcase %}
+    {% endfor %}
+
+</section>
+
+{% schema %}
+{
+    "name": "About Ingredients",
+    "enabled_on": {
+        "templates": ["*"]
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "ingredients-header",
+            "label": "Ingredients Header",
+            "default": "ingredients"
+        },
+        {
+            "type": "text",
+            "id": "ingredients-subheader",
+            "label": "Ingredients Subheader",
+            "default": "Our collection is 100% natural, made from sustainably sourced, clean ingredients."
+        },
+        {
+            "type": "textarea",
+            "id": "ingredients-text",
+            "label": "Ingredients Text",
+            "default": "<span>We work with family run suppliers in the UK and France to source the highest quality organic ingredients. Our suppliers are committed to protecting local communities and their environment, promoting local agriculture, and contributing to sustainable development projects. <br/> <br/>Our products are lovingly produced by hand in small batches, which means less waste and avoids excess stock.</span>"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Ingredient Card",
+            "type": "card",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "ingredient-name",
+                    "label": "Ingredient Name",
+                    "default": "andiroba"
+                },
+                {
+                    "type": "text",
+                    "id": "ingredient-benefits",
+                    "label": "Benefits Header",
+                    "default": "benefits"
+                },
+                {
+                    "type": "textarea",
+                    "id": "ingredient-benefits-text",
+                    "label": "Benefits Text",
+                    "default": "<span>Aids in healing damaged skin via its high myristic acid content. Provides a natural protective barrier for the skin. Anti-inflamatory, and all full of shit vitamins.</span>"
+                },
+                {
+                    "type": "text",
+                    "id": "ingredient-usage",
+                    "label": "Usage Header",
+                    "default": "ancient usage"
+                },
+                {
+                    "type": "textarea",
+                    "id": "ingredient-usage-text",
+                    "label": "Usage Text",
+                    "default": "<span>Andiroba Oil has been used as a natural treatment for inflammation and joint pain for hundreds of years.</span>"
+                },
+                {
+                    "type": "text",
+                    "id": "ingredient-source",
+                    "label": "Source Header",
+                    "default": "sourced"
+                },
+                {
+                    "type": "text",
+                    "id": "ingredient-source-text",
+                    "label": "Source Text",
+                    "default": "amazon rainforest, brazil"
+                },
+                {
+                    "type": "text",
+                    "id": "ingredient-found",
+                    "label": "Found In Header",
+                    "default": "found in"
+                },
+                {
+                    "type": "text",
+                    "id": "ingredient-found-text",
+                    "label": "Found In Text",
+                    "default": "Ground - Vata Body Oil"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
