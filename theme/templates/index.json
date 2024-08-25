@@ -6,7 +6,8 @@
     "gallery": { "type": "gallery" },
     "quote-block": { "type": "quote-block" },
     "showcase": { "type": "showcase" },
-    "sets": { "type": "sets" }
+    "sets": { "type": "sets" },
+    "feed": { "type": "feed"}
   },
-  "order": ["hero", "flag", "gallery", "quote-block", "showcase", "sets"]
+  "order": ["hero", "flag", "gallery", "quote-block", "showcase", "sets", "feed"]
 }
