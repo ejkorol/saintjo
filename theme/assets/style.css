@@ -602,6 +602,10 @@ video {
   z-index: 100;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -796,6 +800,10 @@ video {
 
 .w-\[1035\] {
   width: 1035;
+}
+
+.w-4\/5 {
+  width: 80%;
 }
 
 .max-w-\[165px\] {

@@ -1,4 +1,31 @@
 <script defer>
+class InstagramApi {
+  constructor(API_KEY, user) {
+    this.apiKey = API_KEY;
+    this.baseURL = 'https://graph.instagram.com'
+    this.user = user;
+  }
+
+  async fetchPosts() {
+    try {
+      const url = `${this.baseURL}/${this.user}?access_token=${this.apiKey}`
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(res.status);
+      };
+      const json = await res.json();
+      console.log(json);
+    } catch(e) {
+      console.error(e);
+    };
+  };
+};
+
+const IG_API_KEY = 'IGQWRNejl0b0hScklyUjc1Ml9oelZAmVDdBSEVmYzNGU1prY0EwcDU0TjhneGpiOExqQ2ROTVV0Y3NGVl9FUDVuTVFLRXdDM3FFWU5kNUs2XzNjSVJBNm5ldGpWanhqb2pOQUFKaVN4RHg2QQZDZD';
+const instagramAccount = 'me'
+
+const instagramInterface = new InstagramApi(IG_API_KEY, instagramAccount)
+instagramInterface.fetchPosts();
 </script>
 
 <section class="flex flex-col text-center my-12">

@@ -1,0 +1,47 @@
+<section class="flex flex-col items-center justify-center p-16 bg-[#F9F6F2] h-96">
+    <div class="flex flex-col gap-8 items-center justify-center text-center w-4/5">
+        <h4 class="font-lato text-sm font-semibold tracking-wide uppercase text-[#5B5546]">{{ section.settings.header }}</h4>
+        <p class="text-3xl font-lato tracking-wide text-[#5B5546]">{{ section.settings.quote }}</p>
+            <a href="{{ section.settings.button_link }}" class="relative flex items-center w-fit gap-4 font-lato text-sm uppercase tracking-wider cursor-pointer m-auto">
+                {{ section.settings.button }}
+                <span>
+                    <img src={{ 'arrow.svg' | asset_url }}/>
+                </span>
+            </a>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Quote Block Centered",
+        "enabled_on": {
+            "templates": ["*"]
+        },
+        "settings": [
+            {
+                "type": "textarea",
+                "id": "quote",
+                "label": "Quote",
+                "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+            },
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header",
+                "default": "Commitment to sustainability"
+            },
+            {
+                "type": "text",
+                "id": "button",
+                "label": "Button Text",
+                "default": "read our story"
+            },
+            {
+                "type": "page",
+                "id": "button_link",
+                "label": "Page Link"
+            }
+        ],
+        "presets": []
+    }
+{% endschema %}
