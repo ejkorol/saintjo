@@ -1,62 +1,9 @@
+<script defer>
+</script>
+
 <section class="flex flex-col text-center my-12">
     <a class="text-md font-lato tracking-wide font-medium uppercase">follow us @saintjothebrand</a>
     <div class="flex items-center justify-center mt-12 w-full h-full" id="instagram-feed">
-        <img class="object-cover h-[350px] w-[350px]" src="../assets/hero-bg-placeholder.png" alt="instagram feed"/>
+        <img class="object-cover h-[350px] w-[350px]" src="{{ "set-placeholder.png" | asset_url }}" alt="instagram feed"/>
     </div>
 </section>
-
-<script>
-const accessToken = '68c9b386a1d436cec10f22cd9b10a45c'; // Replace with your access token
-const userId = '7163120'; // Replace with your Instagram User ID
-
-async function fetchInstagramFeed() {
-  try {
-    const response = await fetch(`https://graph.instagram.com/${userId}?fields=id&access_token=${accessToken}`);
-    const data = await response.json();
-
-    console.log(data)
-
-    if (data.data) {
-      displayFeed(data.data);
-    } else {
-      console.error('Error fetching Instagram feed:', data);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-function displayFeed(mediaItems) {
-  const feedContainer = document.getElementById('instagram-feed');
-  feedContainer.innerHTML = '';
-
-  mediaItems.forEach(item => {
-    let mediaElement;
-
-    switch (item.media_type) {
-      case 'IMAGE':
-        mediaElement = `<img src="${item.media_url}" alt="${item.caption || ''}">`;
-        break;
-      case 'VIDEO':
-        mediaElement = `<video controls><source src="${item.media_url}" type="video/mp4"></video>`;
-        break;
-      case 'CAROUSEL_ALBUM':
-        mediaElement = item.children.data.map(child => `<img src="${child.media_url}" alt="${item.caption || ''}">`).join('');
-        break;
-      default:
-        mediaElement = '';
-    }
-
-    feedContainer.innerHTML += `
-      <div class="instagram-post">
-        ${mediaElement}
-        <p>${item.caption || ''}</p>
-        <a href="${item.permalink}" target="_blank">View on Instagram</a>
-      </div>
-    `;
-  });
-}
-
-// Call the function to fetch and display the feed
-fetchInstagramFeed();
-</script>
